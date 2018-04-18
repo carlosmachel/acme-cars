@@ -1,4 +1,4 @@
-(function($, doc, Validator) {
+(function($, doc, Validator, CarShop) {
   'use strict';
 
   var app = (function() {
@@ -46,7 +46,7 @@
     }
 
     function handleReadyStateChange() {
-      if (isRequestOk()) {
+      if (isRequestOk(ajax)) {
         populateCompanyInfo();
       }
     }
@@ -74,8 +74,8 @@
       return result;
     }
 
-    function isRequestOk() {
-      return ajax.readyState === 4 && ajax.status === 200;
+    function isRequestOk(xhr) {
+      return xhr.readyState === 4 && xhr.status === 200;
     }
 
     function getCompanyInfo() {
@@ -84,41 +84,58 @@
       ajax.addEventListener('readystatechange', handleReadyStateChange, false);
     }
 
+    function createCar() {
+      var image = $('[data-js="form-image"]').get().value;
+      var brandModel = $('[data-js="form-brandModel"]').get().value;
+      var year = $('[data-js="form-year"]').get().value;
+      var color = $('[data-js="form-color"]').get().value;
+      var plate = $('[data-js="form-plate"]').get().value;
+
+      return new CarShop.Car(image, brandModel, year, plate, color);
+    }
+
     return {
       init: function init() {
         this.validator = Validator('[data-js="form"]');
         this.initEvents();
         getCompanyInfo();
+        this.initPopulateTable();
+        CarShop.getCars(this.initPopulateTable);
+      },
+      initPopulateTable(cars) {
+        console.log('called');
+        console.log(cars);
+        if (cars) {
+          cars.forEach(function(item) {
+            app.populateRow(item);
+          });
+        }
       },
       initEvents: function initEvents() {
         $('[data-js="form"]').on('submit', app.handleSubmit);
       },
       handleSubmit: function handleSubmit(event) {
         event.preventDefault();
-
         if (app.validator.validateForm()) {
-          var $tbody = $('[data-js="table-body"]').get();
-          $tbody.appendChild(app.populateRow());
-          $('[data-js="form"]')
-            .get()
-            .reset();
+          var car = createCar();
+          CarShop.insertCar(car, app.populateRow);
         }
       },
-      populateRow: function populateRow() {
+      populateRow: function populateRow(car) {
+        var $tbody = $('[data-js="table-body"]').get();
         var $fragment = doc.createDocumentFragment();
         var $tr = createTableRow();
-
-        var $inputs = $('[data-js="form-input"]');
-        var $image = $('[data-js="form-image"]');
-
-        $tr.appendChild(createTableDataImage($image.get().value));
-
-        $inputs.forEach(function(item) {
-          $tr.appendChild(createTableData(item.value));
-        });
-
+        $tr.appendChild(createTableDataImage(car.image));
+        $tr.appendChild(createTableData(car.brandModel));
+        $tr.appendChild(createTableData(car.year));
+        $tr.appendChild(createTableData(car.plate));
+        $tr.appendChild(createTableData(car.color));
         $tr.appendChild(createRemoveButton());
-        return $tr;
+        $tbody.appendChild($tr);
+
+        $('[data-js="form"]')
+          .get()
+          .reset();
       }
     };
   })();
@@ -126,4 +143,4 @@
   window.app = app;
 
   app.init();
-})(window.DOM, document, window.Validator);
+})(window.DOM, document, window.Validator, window.CarShop);

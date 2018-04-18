@@ -25,12 +25,12 @@
   }
 
   Validator.prototype.validateForm = function validateForm() {
-    return Array.prototype.every.call(
-      this.formValidation.querySelectorAll('input'),
-      function(item) {
-        return Validator.prototype.validateItem.call(item);
-      }
-    );
+    var inputs = this.formValidation.querySelectorAll('input');
+    var validated = false;
+    inputs.forEach(function(item) {
+      validated = Validator.prototype.validateItem.call(item);
+    });
+    return validated;
   };
 
   Validator.prototype.validateItem = function validateItem() {

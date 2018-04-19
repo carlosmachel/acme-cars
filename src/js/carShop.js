@@ -17,12 +17,22 @@
 
   CarShop.getCars = function getCars(callback) {
     var get = new XMLHttpRequest();
-    get.open('GET', 'http://localhost:3000/car', true);
+    get.open('GET', 'http://localhost:3000/car');
     get.send(null);
     get.onreadystatechange = function() {
       if (isRequestOk(get)) {
         callback(JSON.parse(get.responseText));
       }
+    };
+  };
+
+  CarShop.removeCar = function removeCar(plate) {
+    var del = new XMLHttpRequest();
+    del.open('DELETE', 'http://localhost:3000/car?plate=' + plate);
+    del.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+    del.send('plate=' + plate);
+    del.onreadystatechange = function() {
+      if (isRequestOk(del)) return del.responseText;
     };
   };
 
@@ -39,9 +49,10 @@
         car.year +
         '&plate=' +
         car.plate +
-        '&color' +
+        '&color=' +
         car.color
     );
+    console.log(post);
     post.onreadystatechange = function() {
       if (isRequestOk(post)) {
         return callback(car);

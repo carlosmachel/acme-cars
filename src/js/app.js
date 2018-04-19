@@ -19,11 +19,12 @@
       return $td;
     }
 
-    function createRemoveButton() {
+    function createRemoveButton(key) {
       var $td = doc.createElement('td');
       $td.classList.add('td__actions');
 
       var $button = doc.createElement('button');
+      $button.setAttribute('data-js-key', key);
       var $icon = doc.createElement('i');
       $icon.classList.add('fa', 'fa-trash');
       $button.appendChild($icon);
@@ -34,8 +35,9 @@
     }
 
     function handleRemoveClick() {
+      var plate = this.getAttribute('data-js-key');
+      CarShop.removeCar(plate);
       var $tbody = $('[data-js="table-body"]').get();
-
       $tbody.removeChild(this.parentElement.parentElement);
     }
 
@@ -99,11 +101,9 @@
         this.validator = Validator('[data-js="form"]');
         this.initEvents();
         getCompanyInfo();
-        this.initPopulateTable();
         CarShop.getCars(this.initPopulateTable);
       },
       initPopulateTable(cars) {
-        console.log('called');
         console.log(cars);
         if (cars) {
           cars.forEach(function(item) {
@@ -130,7 +130,7 @@
         $tr.appendChild(createTableData(car.year));
         $tr.appendChild(createTableData(car.plate));
         $tr.appendChild(createTableData(car.color));
-        $tr.appendChild(createRemoveButton());
+        $tr.appendChild(createRemoveButton(car.plate));
         $tbody.appendChild($tr);
 
         $('[data-js="form"]')

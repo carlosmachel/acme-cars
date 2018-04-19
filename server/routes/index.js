@@ -20,4 +20,12 @@ router.post('/', function(req, res) {
   res.json({ message: 'success' });
 });
 
+router.delete('/', function(req, res) {
+  console.log(req);
+  data = data.filter(function(car) {
+    return car.plate !== req.body.plate;
+  });
+  res.json({ message: 'success' });
+});
+
 module.exports = router;

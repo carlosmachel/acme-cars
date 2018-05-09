@@ -1,0 +1,26 @@
+{
+  "name": "acme-cars",
+  "version": "1.0.0",
+  "description": "Final Project of Javascript Ninja",
+  "main": "index.js",
+  "scripts": {
+    "fix": "standard --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carlosmachel/acme-cars.git"
+  },
+  "keywords": [
+    "javascript",
+    "vanilla-javascript"
+  ],
+  "author": "Carlos Machel <carlos.git@outlook.com> (http://www.carlosmachel.com/)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/carlosmachel/acme-cars/issues"
+  },
+  "homepage": "https://github.com/carlosmachel/acme-cars#readme",
+  "devDependencies": {
+    "standard": "^11.0.1"
+  }
+}

@@ -6,7 +6,7 @@
   "scripts": {
     "standard": "standard",
     "fix": "standard --fix",
-    "prepush": "npm run fix"
+    "prepush": "npm run standard"
   },
   "repository": {
     "type": "git",

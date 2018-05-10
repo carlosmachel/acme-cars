@@ -51,7 +51,7 @@
         populateCompanyInfo()
       }
     }
-    /* function clearData () {} */
+    function clearData () {}
 
     function populateCompanyInfo () {
       var data = parseData()

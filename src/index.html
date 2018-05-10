@@ -22,28 +22,31 @@
     <form action="/" class="form" data-js="form" novalidate>
       <div class="form-row">
         <label class="form-row__label" for="car-image">Imagem</label>
-        <input class="form-row__input form-row__input--text" type="text" id="car-image" name="car-image" required data-js="form-image">
-        <span class="form-row__error-message" data-js="error-message"></span>
+        <input class="form-row__input form-row__input--text" placeholder="http:// or https://" type="text" id="car-image" name="car-image"
+          required data-js="form-image">
+        <span class="form-row__error-message" data-js="error-message" aria-live="polite"></span>
       </div>
       <div class="form-row">
         <label class="form-row__label" for="car-brandModel">Marca/Modelo</label>
         <input class="form-row__input form-row__input--text" type="text" id="car-brandModel" name="car-brandModel" required data-js="form-brandModel">
-        <span class="form-row__error-message" data-js="error-message"></span>
+        <span class="form-row__error-message" data-js="error-message" aria-live="polite"></span>
       </div>
       <div class="form-row">
         <label class="form-row__label" for="car-year">Ano</label>
-        <input class="form-row__input form-row__input--number" type="number" id="car-year" name="car-year" required data-js="form-year">
-        <span class="form-row__error-message" data-js="error-message"></span>
+        <input class="form-row__input form-row__input--number form-row__input--small" type="number" id="car-year" name="car-year"
+          required data-js="form-year">
+        <span class="form-row__error-message" data-js="error-message" aria-live="polite"></span>
       </div>
-      <div class="form-row">
+      <div class="form-row form-row--small">
         <label class="form-row__label" for="car-plate">Placa</label>
-        <input class="form-row__input form-row__input--text" type="text" id="car-plate" name="car-plate" required data-js="form-plate">
-        <span class="form-row__error-message" data-js="error-message"></span>
+        <input class="form-row__input form-row__input--text form-row__input--small" type="text" id="car-plate" name="car-plate" required
+          data-js="form-plate">
+        <span class="form-row__error-message" data-js="error-message" aria-live="polite"></span>
       </div>
       <div class="form-row">
         <label class="form-row__label" for="car-color">Cor</label>
         <input class="form-row__input form-row__input--text" type="text" id="car-color" name="car-color" required data-js="form-color">
-        <span class="form-row__error-message" data-js="error-message"></span>
+        <span class="form-row__error-message" data-js="error-message" aria-live="polite"></span>
       </div>
       <div class="form-row">
         <button class="form-row__button">Cadastrar</button>

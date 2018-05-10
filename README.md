@@ -4,6 +4,14 @@ Final project to the course [Javascript Ninja](https://blog.da2k.com.br/curso-ja
 
 A car shop with vanilla javascript.
 
+Project consisted in create a form with only HTML, CSS and vanilla-javascript.
+
+The company's **name** and **telephone** should come from an AJAX request to a json file.
+
+The form should have inputs for car image (an URL), Brand and Model, Year, Plate, Color and a submit button.
+
+When submited the form data has to show in the table.
+
 ## Getting Started
 
 ### Prerequisites
@@ -15,7 +23,7 @@ A car shop with vanilla javascript.
 Clone this repo. Go to the directory server folder and run npm install
 
 ```
-cd server/ npm install 
+cd server/ npm install
 ```
 
 To run the server code you should go to server folder and run npm start.
@@ -34,7 +42,7 @@ Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c6
 
 ## Versioning
 
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
 
 ## Authors
 

@@ -4,7 +4,9 @@
   "description": "Final Project of Javascript Ninja",
   "main": "index.js",
   "scripts": {
-    "fix": "standard --fix"
+    "standard": "standard",
+    "fix": "standard --fix",
+    "prepush": "npm run fix"
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,7 @@
   },
   "homepage": "https://github.com/carlosmachel/acme-cars#readme",
   "devDependencies": {
+    "husky": "^1.0.0-rc.4",
     "standard": "^11.0.1"
   }
 }

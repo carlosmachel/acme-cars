@@ -1,6 +1,6 @@
 ;(function ($, doc, Validator, CarShop) {
   'use strict'
-  var app = (function () {
+  var app = (function appController () {
     var ajax = new window.XMLHttpRequest()
 
     function createTableData (content) {
@@ -51,7 +51,7 @@
         populateCompanyInfo()
       }
     }
-    function clearData () {}
+    /* function clearData () {} */
 
     function populateCompanyInfo () {
       var data = parseData()
